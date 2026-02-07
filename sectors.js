@@ -2,6 +2,8 @@ const buttons = document.querySelectorAll(".sector-button");
 const cards = document.querySelectorAll(".card");
 const backToTopButton = document.querySelector(".back-to-top");
 
+cards.forEach((card) => card.classList.add("reveal-card"));
+
 const setActiveSector = (sector) => {
   buttons.forEach((button) => {
     button.classList.toggle("is-active", button.dataset.sector === sector);
@@ -89,4 +91,25 @@ if (backToTopButton) {
   backToTopButton.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+}
+
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+      rootMargin: "0px 0px -10% 0px",
+    }
+  );
+
+  cards.forEach((card) => revealObserver.observe(card));
+} else {
+  cards.forEach((card) => card.classList.add("is-revealed"));
 }
