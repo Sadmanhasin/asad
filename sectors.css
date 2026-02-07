@@ -169,6 +169,38 @@ body::after {
   border-color: transparent;
 }
 
+.sector-button.is-active[data-sector="cultural"] {
+  background: #ff751f;
+}
+
+.sector-button.is-active[data-sector="photography"] {
+  background: #1d5d9b;
+}
+
+.sector-button.is-active[data-sector="blood"] {
+  background: #f62323;
+}
+
+.sector-button.is-active[data-sector="nature"] {
+  background: #087722;
+}
+
+.sector-button.is-active[data-sector="education"] {
+  background: #8b00d6;
+}
+
+.sector-button.is-active[data-sector="charity"] {
+  background: #ff0000;
+}
+
+.sector-button.is-active[data-sector="medical"] {
+  background: #078697;
+}
+
+.sector-button.is-active[data-sector="clubs"] {
+  background: #0b2b5b;
+}
+
 
 .card + .card {
   margin-top: 10px;
